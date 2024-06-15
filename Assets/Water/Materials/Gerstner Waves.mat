@@ -115,8 +115,8 @@ Material:
     - _Steepness: 0.61
     - _Surface: 0
     - _TESSELLATION_EDGE: 1
-    - _TessellationEdgeLength: 1
-    - _TessellationUniform: 15
+    - _TessellationEdgeLength: 5
+    - _TessellationUniform: 20
     - _Tessellation_Edge: 0
     - _TransDepthRange: 6
     - _WaveSpeed: 0.2
