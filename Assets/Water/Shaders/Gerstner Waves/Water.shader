@@ -29,7 +29,13 @@ Shader "URP Shader/Water" {
         _ShallowCollor ("Shallow Color", Color) = (1, 1, 1, 1)
         _DeepColor ("Deep Color", Color) = (1, 1, 1, 1)
         _DepthRange ("Depth Range", Float) = 1
-        _TransDepthRange("Trans Depth Range",Float) = 1
+
+        [Header(Foam)]
+        [Space(5)]
+        _FoamMap ("Foam Map", 2D) = "white" { }
+        _FoamColor ("Foam Color", Color) = (1, 1, 1, 1)
+        _FoamIntensity ("Foam Intensity", Float) = 1
+        _FoamDistance ("Foam Distance", Float) = 0.1
 
         [Header(Tessellation)]
         [Space(5)]

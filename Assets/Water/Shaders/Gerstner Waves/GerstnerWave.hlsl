@@ -1,5 +1,5 @@
-#ifndef  GERSTNERWAVE_INCLUDED
-#define GERSTNERWAVE_INCLUDED
+#ifndef  GERSTNER_WAVE_INCLUDED
+#define GERSTNER_WAVE_INCLUDED
 
 float _WaveSpeed;
 float4 _Wave1, _Wave2, _Wave3, _Wave4, _Wave5, _Wave6, _Wave7, _Wave8, _Wave9, _Wave10, _Wave11, _Wave12;

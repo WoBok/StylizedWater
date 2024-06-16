@@ -1,7 +1,7 @@
 #ifndef WATER_SURFACE_INCLUDED
 #define WATER_SURFACE_INCLUDED
 
-#include "LookingThroughWater.hlsl"
+#include "WaterColor.hlsl"
 
 void InitializeInputData(Varyings input, out InputData inputData) {
     inputData = (InputData)0;
@@ -20,7 +20,7 @@ void InitializeSurfaceData(Varyings input, out SurfaceData surfaceData) {
     surfaceData.occlusion = 1;
     surfaceData.alpha = albedo.a * _BaseColor.a;
 
-    half4 waterColor = ColorBelowWater(input.screenPos);
+    half4 waterColor = WaterColor(input.screenPos,input.uv);
     surfaceData.albedo = waterColor.rgb;
     surfaceData.alpha = waterColor.a*_BaseColor.a;
 }

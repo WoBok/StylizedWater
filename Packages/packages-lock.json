@@ -225,18 +225,6 @@
         "com.unity.xr.interaction.toolkit": "2.0.0"
       }
     },
-    "com.wobok.fallenleaves": {
-      "version": "file:E:/SDK/Fallen_Leaves",
-      "depth": 0,
-      "source": "local",
-      "dependencies": {}
-    },
-    "com.wobok.gbhighlight": {
-      "version": "file:E:/SDK/GBHighlight",
-      "depth": 0,
-      "source": "local",
-      "dependencies": {}
-    },
     "com.unity.modules.ai": {
       "version": "1.0.0",
       "depth": 0,
