@@ -22,7 +22,7 @@ half4 WaterColor(float4 screenPos, float2 uv) {
 
     float foamOffset = tex2D(_FoamMap, uv * _FoamMap_ST.xy + _Time.x).x;
     float foamFactor = pow(saturate(_FoamIntensity * foamOffset -depthDifference) * 20, 20) * saturate(depthDifference / _FoamDistance);
-    color.rgb = lerp(color, float3(1,1,1), foamFactor);
+    color.rgb = lerp(color, _FoamColor.rgb, foamFactor);
 
     return color;
 }
