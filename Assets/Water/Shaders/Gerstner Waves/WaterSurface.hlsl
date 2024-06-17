@@ -2,10 +2,12 @@
 #define WATER_SURFACE_INCLUDED
 
 #include "WaterColor.hlsl"
-#include "WaterSSS.hlsl"
+#include "WaterNormal.hlsl"
 
 void InitializeInputData(Varyings input, out InputData inputData) {
     inputData = (InputData)0;
+    float3 normal = GetNormal(input.normalWS, input.uv);
+    inputData.normalWS = normalize(normal);
     inputData.normalWS = normalize(input.normalWS);
     inputData.viewDirectionWS = input.viewDirectionWS;
     inputData.bakedGI = SAMPLE_GI(input.staticLightmapUV, input.vertexSH, input.normalWS);
@@ -33,14 +35,11 @@ half4 Surface(Varyings input) {
     SurfaceData surfaceData;
     InitializeSurfaceData(input, surfaceData);
 
+    half3 fresnel = pow((1 - saturate(dot(inputData.normalWS, inputData.viewDirectionWS))), _FresnelPower) * _FresnelColor.rgb * _FresnelIntensity;
+
     half4 lightColor = UniversalFragmentPBR(inputData, surfaceData);
 
-    Light light = GetMainLight(inputData.shadowCoord);
-    float sss = SubsurfaceScattering(inputData.normalWS, inputData.viewDirectionWS, light.direction, input.heightOS);
-    sss *= light.shadowAttenuation;
-    half3 sssColor = sss * light.color;
-
-    lightColor.rgb += sssColor;
+    lightColor.rgb += fresnel;
 
     return lightColor;
 }

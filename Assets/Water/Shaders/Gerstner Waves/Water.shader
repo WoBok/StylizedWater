@@ -30,6 +30,12 @@ Shader "URP Shader/Water" {
         _DeepColor ("Deep Color", Color) = (1, 1, 1, 1)
         _DepthRange ("Depth Range", Float) = 1
 
+        [Header(Normal)]
+        [Space(5)]
+        _NormalMap ("Normal Map", 2D) = "white" { }
+        _NormalScale ("Normal Scale", Float) = 0.2
+        _WaveNormal ("Wave Normal", Vector) = (1, 1, 1, 1)
+
         [Header(Foam)]
         [Space(5)]
         _FoamMap ("Foam Map", 2D) = "white" { }
@@ -37,12 +43,20 @@ Shader "URP Shader/Water" {
         _FoamIntensity ("Foam Intensity", Float) = 1
         _FoamDistance ("Foam Distance", Float) = 0.1
 
-        [Header(SSS)]
+        [Header(Ripple)]
         [Space(5)]
-        _FrontSubsurfaceDistortion ("Front Subsurface Distortion", Range(0, 1)) = 0.5
-        _BackSubsurfaceDistortion ("Back Subsurface Distortion", Range(0, 1)) = 0.5
-        _FrontSSSIntensity ("Front SSS Intensity", float) = 0.2
-        _HeightCorrection ("SSS Height Correction", float) = 0
+        _WaveTex ("WaveTex", 2D) = "white" { }
+        _NoiseTex ("NoiseTex", 2D) = "white" { }
+        _WaveSpeed2 ("WaveSpeed", float) = 1
+        _WaveRange ("WaveRange", float) = 0.5
+        _WaveRangeA ("WaveRangeA", float) = 1
+        _WaveDelta ("WaveDelta", float) = 0.5
+
+        [Header(Fresnel)]
+        [Space(5)]
+        _FresnelColor ("Fresnel Color", Color) = (1, 1, 1, 0)
+        _FresnelPower ("Fresnel Power", Range(0, 100)) = 3
+        _FresnelIntensity ("Frensnel Intensity", Range(0, 1)) = 1
 
         [Header(Tessellation)]
         [Space(5)]
@@ -71,7 +85,6 @@ Shader "URP Shader/Water" {
             #pragma shader_feature _TESSELLATION_EDGE_ON
 
             #pragma multi_compile  _ _MAIN_LIGHT_SHADOWS _MAIN_LIGHT_SHADOWS_CASCADE
-            //#pragma multi_compile  _SHADOWS_SOFT
             #pragma multi_compile _ _ADDITIONAL_LIGHTS_VERTEX _ADDITIONAL_LIGHTS
             #pragma multi_compile _ SHADOWS_SHADOWMASK
 
