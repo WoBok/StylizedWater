@@ -29,6 +29,8 @@ Varyings Vertex(Attributes input) {
     output.screenPos = ComputeScreenPos(output.positionCS);
     output.screenPos.z = -TransformWorldToView(TransformObjectToWorld(input.positionOS)).z;
 
+    output.heightOS = input.positionOS.y;
+
     OUTPUT_LIGHTMAP_UV(input.staticLightmapUV, unity_LightmapST, output.staticLightmapUV);
     OUTPUT_SH(output.normalWS.xyz, output.vertexSH);
 

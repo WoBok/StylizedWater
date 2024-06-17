@@ -17,8 +17,9 @@ struct Varyings {
     float3 positionWS : TEXCOORD2;
     float3 viewDirectionWS : TEXCOORD3;
     float4 screenPos : TEXCOORD4;
+    float heightOS : TEXCOORD5;
     float4 positionCS : SV_POSITION;
-    DECLARE_LIGHTMAP_OR_SH(staticLightmapUV, vertexSH, 5);
+    DECLARE_LIGHTMAP_OR_SH(staticLightmapUV, vertexSH, 6);
 };
 
 sampler2D _BaseMap, _FoamMap;

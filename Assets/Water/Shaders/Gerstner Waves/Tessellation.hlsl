@@ -1,4 +1,4 @@
-﻿#if !defined(TESSELLATION_INCLUDED)
+﻿#ifndef TESSELLATION_INCLUDED
 #define TESSELLATION_INCLUDED
 
 float _TessellationUniform;

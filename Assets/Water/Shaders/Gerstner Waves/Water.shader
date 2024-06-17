@@ -37,6 +37,13 @@ Shader "URP Shader/Water" {
         _FoamIntensity ("Foam Intensity", Float) = 1
         _FoamDistance ("Foam Distance", Float) = 0.1
 
+        [Header(SSS)]
+        [Space(5)]
+        _FrontSubsurfaceDistortion ("Front Subsurface Distortion", Range(0, 1)) = 0.5
+        _BackSubsurfaceDistortion ("Back Subsurface Distortion", Range(0, 1)) = 0.5
+        _FrontSSSIntensity ("Front SSS Intensity", float) = 0.2
+        _HeightCorrection ("SSS Height Correction", float) = 0
+
         [Header(Tessellation)]
         [Space(5)]
         _TessellationUniform ("Tessellation Uniform", Range(1, 64)) = 1
