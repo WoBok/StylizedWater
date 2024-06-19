@@ -21,8 +21,8 @@ struct Varyings {
     DECLARE_LIGHTMAP_OR_SH(staticLightmapUV, vertexSH, 5);
 };
 
-sampler2D _BaseMap, _FoamMap;
-float4 _BaseMap_ST, _FoamMap_ST;
+sampler2D _FoamMap;
+float4 _FoamMap_ST;
 half4 _BaseColor, _FresnelColor;
 float _Smoothness, _Metallic, _FresnelPower, _FresnelIntensity;
 

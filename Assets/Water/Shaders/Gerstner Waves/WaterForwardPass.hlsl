@@ -24,7 +24,7 @@ Varyings Vertex(Attributes input) {
     output.positionWS = positionWS;
     output.viewDirectionWS = normalize(_WorldSpaceCameraPos - positionWS);
 
-    output.uv = TRANSFORM_TEX(input.texcoord, _BaseMap);
+    output.uv = input.texcoord;
 
     output.screenPos = ComputeScreenPos(output.positionCS);
     output.screenPos.z = -TransformWorldToView(TransformObjectToWorld(input.positionOS)).z;

@@ -4,7 +4,7 @@
 float _WaveSpeed;
 float4 _Wave1, _Wave2, _Wave3, _Wave4, _Wave5, _Wave6, _Wave7, _Wave8, _Wave9, _Wave10, _Wave11, _Wave12;
 
-float3 GerstnerWave(float4 wave, float3 p, inout float3 tangent, inout float3 binormal) {//将位置和法线计算分开
+float3 GerstnerWave(float4 wave, float3 p, inout float3 tangent, inout float3 binormal) {
     float period = 2 * PI;
     float k = period / wave.x;
     float c = sqrt(9.8 / k) * _WaveSpeed;

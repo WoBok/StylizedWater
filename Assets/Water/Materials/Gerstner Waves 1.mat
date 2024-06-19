@@ -11,7 +11,8 @@ Material:
   m_Shader: {fileID: 4800000, guid: 2a19c65bd978b7445b99e502e7cb806b, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
-  m_ValidKeywords: []
+  m_ValidKeywords:
+  - _NORMALSWITCH_ON
   m_InvalidKeywords:
   - _TESSELLATION_EDGE
   m_LightmapFlags: 4
@@ -50,7 +51,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _FoamMap:
         m_Texture: {fileID: 2800000, guid: 50e49f3c7c9916b4eae6d9fbba6a1cfa, type: 3}
-        m_Scale: {x: 80, y: 80}
+        m_Scale: {x: 50, y: 50}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
         m_Texture: {fileID: 0}
@@ -65,8 +66,8 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NormalMap:
-        m_Texture: {fileID: 2800000, guid: 41ecc25fc1c52864ab844620ecb54bc3, type: 3}
-        m_Scale: {x: 50, y: 50}
+        m_Texture: {fileID: 2800000, guid: 28b3c38662e2a6c488a8cab8745c7f1b, type: 3}
+        m_Scale: {x: 30, y: 20}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
         m_Texture: {fileID: 0}
@@ -115,9 +116,9 @@ Material:
     - _DstBlend: 0
     - _DstBlendAlpha: 0
     - _EnvironmentReflections: 1
-    - _FoamDistance: 1
-    - _FoamIntensity: 2
-    - _FresnelIntensity: 1
+    - _FoamDistance: 2
+    - _FoamIntensity: 3
+    - _FresnelIntensity: 0.5
     - _FresnelPower: 25
     - _FrontSSSIntensity: 0.2
     - _FrontSubsurfaceDistortion: 0.5
@@ -127,11 +128,12 @@ Material:
     - _HeightCorrection: 0
     - _Metallic: 0
     - _NormalScale: 0.2
+    - _NormalSwitch: 1
     - _OcclusionStrength: 1
     - _Parallax: 0.005
     - _QueueOffset: 0
     - _ReceiveShadows: 1
-    - _Smoothness: 1
+    - _Smoothness: 0.96
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _Speed: 1
@@ -140,7 +142,7 @@ Material:
     - _Steepness: 0.61
     - _Surface: 0
     - _TESSELLATION_EDGE: 1
-    - _TessellationEdgeLength: 5
+    - _TessellationEdgeLength: 35
     - _TessellationUniform: 35
     - _Tessellation_Edge: 0
     - _TransDepthRange: 6
@@ -155,12 +157,12 @@ Material:
     m_Colors:
     - _BaseColor: {r: 0, g: 0.6862745, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _DeepColor: {r: 0, g: 0.8464361, b: 0.9622642, a: 1}
+    - _DeepColor: {r: 0, g: 0.2532075, b: 0.5188679, a: 1}
     - _Direction: {r: 1, g: 1, b: -1, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _FoamColor: {r: 1, g: 1, b: 1, a: 1}
     - _FresnelColor: {r: 0.8537736, g: 1, b: 0.968461, a: 0}
-    - _ShallowCollor: {r: 0, g: 1, b: 0.4627452, a: 0.64705884}
+    - _ShallowCollor: {r: 0, g: 0.7372546, b: 1, a: 0.64705884}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
     - _Wave1: {r: 1, g: 0.3, b: 1, a: 0.5}
     - _Wave10: {r: 0.02, g: 0.1, b: 0.2, a: 0.4}
@@ -177,7 +179,7 @@ Material:
     - _WaveA: {r: 20.68, g: 0.26, b: 2.37, a: 2.4}
     - _WaveB: {r: 31.73, g: 0.54, b: 1.06, a: -0.98}
     - _WaveC: {r: 21.35, g: 0.34, b: 13.02, a: 0.96}
-    - _WaveNormal: {r: 0.15, g: 0.08, b: 0.07, a: 0.1}
+    - _WaveNormal: {r: 0.3, g: 0.1, b: 0.2, a: 0.2}
   m_BuildTextureStacks: []
 --- !u!114 &8871201559771399303
 MonoBehaviour:

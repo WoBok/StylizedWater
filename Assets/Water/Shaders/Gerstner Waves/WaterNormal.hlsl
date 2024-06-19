@@ -1,9 +1,8 @@
 #ifndef WATER_NORMAL_INCLUDED
 #define WATER_NORMAL_INCLUDED
 
-float4 _WaveNormal;
 sampler2D _NormalMap;
-float4 _NormalMap_ST;
+float4 _WaveNormal, _NormalMap_ST;
 float _NormalScale;
 
 float3 BlendNormals(float3 n1, float3 n2) {

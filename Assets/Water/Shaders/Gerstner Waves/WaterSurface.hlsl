@@ -6,9 +6,14 @@
 
 void InitializeInputData(Varyings input, out InputData inputData) {
     inputData = (InputData)0;
-    float3 normal = GetNormal(input.normalWS, input.uv);
-    inputData.normalWS = normalize(normal);
-    inputData.normalWS = normalize(input.normalWS);
+
+    #ifdef _NORMALSWITCH_ON
+        float3 normal = GetNormal(input.normalWS, input.uv);
+        inputData.normalWS = normalize(normal);
+    #else
+        inputData.normalWS = normalize(input.normalWS);
+    #endif
+
     inputData.viewDirectionWS = input.viewDirectionWS;
     inputData.bakedGI = SAMPLE_GI(input.staticLightmapUV, input.vertexSH, input.normalWS);
     inputData.shadowCoord = TransformWorldToShadowCoord(input.positionWS);
@@ -16,16 +21,13 @@ void InitializeInputData(Varyings input, out InputData inputData) {
 
 void InitializeSurfaceData(Varyings input, out SurfaceData surfaceData) {
     surfaceData = (SurfaceData)0;
-    half4 albedo = tex2D(_BaseMap, input.uv);
-    surfaceData.albedo = albedo.rgb * _BaseColor.rgb;
     surfaceData.metallic = _Metallic;
     surfaceData.smoothness = _Smoothness;
     surfaceData.occlusion = 1;
-    surfaceData.alpha = albedo.a * _BaseColor.a;
 
-    half4 waterColor = WaterColor(input.screenPos, input.uv);
+    half4 waterColor = WaterColor(input.screenPos, input.uv,input.positionCS,input.positionWS);
     surfaceData.albedo = waterColor.rgb;
-    surfaceData.alpha = waterColor.a * _BaseColor.a;
+    surfaceData.alpha = waterColor.a;
 }
 
 half4 Surface(Varyings input) {
@@ -37,10 +39,10 @@ half4 Surface(Varyings input) {
 
     half3 fresnel = pow((1 - saturate(dot(inputData.normalWS, inputData.viewDirectionWS))), _FresnelPower) * _FresnelColor.rgb * _FresnelIntensity;
 
-    half4 lightColor = UniversalFragmentPBR(inputData, surfaceData);
+    half4 color = UniversalFragmentPBR(inputData, surfaceData);
 
-    lightColor.rgb += fresnel;
+    color.rgb += fresnel;
 
-    return lightColor;
+    return color;
 }
 #endif

@@ -1,12 +1,35 @@
 Shader "URP Shader/Water" {
     Properties {
-        _BaseMap ("Albedo", 2D) = "white" { }
-        _BaseColor ("Color", Color) = (1, 1, 1, 1)
-
         [Header(PBR)]
         [Space(5)]
         _Smoothness ("Smoothness", Range(0, 1)) = 0
         _Metallic ("Metallic", Range(0, 1)) = 0
+
+        [Header(Color)]
+        [Space(5)]
+        _ShallowCollor ("Shallow Color", Color) = (1, 1, 1, 1)
+        _DeepColor ("Deep Color", Color) = (1, 1, 1, 1)
+        _DepthRange ("Depth Range", Float) = 1
+
+        [Header(Normal)]
+        [Space(5)]
+        [Toggle]_NormalSwitch ("Normal Switch", Float) = 0
+        _NormalMap ("Normal Map", 2D) = "white" { }
+        _NormalScale ("Normal Scale", Float) = 0.2
+        _WaveNormal ("Wave Normal", Vector) = (1, 1, 1, 1)
+
+        [Header(Foam)]
+        [Space(5)]
+        _FoamMap ("Foam Map", 2D) = "white" { }
+        _FoamColor ("Foam Color", Color) = (1, 1, 1, 1)
+        _FoamIntensity ("Foam Intensity", Float) = 1
+        _FoamDistance ("Foam Distance", Float) = 0.1
+
+        [Header(Fresnel)]
+        [Space(5)]
+        _FresnelColor ("Fresnel Color", Color) = (1, 1, 1, 0)
+        _FresnelPower ("Fresnel Power", Range(0, 100)) = 3
+        _FresnelIntensity ("Frensnel Intensity", Range(0, 1)) = 1
 
         [Header(Wave)]
         [Space(5)]
@@ -23,40 +46,6 @@ Shader "URP Shader/Water" {
         _Wave10 ("Wave 10 Wavelength, Steepness, Direction", Vector) = (10, 0.15, 1, 1)
         _Wave11 ("Wave 11 Wavelength, Steepness, Direction", Vector) = (10, 0.15, 1, 1)
         _Wave12 ("Wave 12 Wavelength, Steepness, Direction", Vector) = (10, 0.15, 1, 1)
-
-        [Header(Water)]
-        [Space(5)]
-        _ShallowCollor ("Shallow Color", Color) = (1, 1, 1, 1)
-        _DeepColor ("Deep Color", Color) = (1, 1, 1, 1)
-        _DepthRange ("Depth Range", Float) = 1
-
-        [Header(Normal)]
-        [Space(5)]
-        _NormalMap ("Normal Map", 2D) = "white" { }
-        _NormalScale ("Normal Scale", Float) = 0.2
-        _WaveNormal ("Wave Normal", Vector) = (1, 1, 1, 1)
-
-        [Header(Foam)]
-        [Space(5)]
-        _FoamMap ("Foam Map", 2D) = "white" { }
-        _FoamColor ("Foam Color", Color) = (1, 1, 1, 1)
-        _FoamIntensity ("Foam Intensity", Float) = 1
-        _FoamDistance ("Foam Distance", Float) = 0.1
-
-        [Header(Ripple)]
-        [Space(5)]
-        _WaveTex ("WaveTex", 2D) = "white" { }
-        _NoiseTex ("NoiseTex", 2D) = "white" { }
-        _WaveSpeed2 ("WaveSpeed", float) = 1
-        _WaveRange ("WaveRange", float) = 0.5
-        _WaveRangeA ("WaveRangeA", float) = 1
-        _WaveDelta ("WaveDelta", float) = 0.5
-
-        [Header(Fresnel)]
-        [Space(5)]
-        _FresnelColor ("Fresnel Color", Color) = (1, 1, 1, 0)
-        _FresnelPower ("Fresnel Power", Range(0, 100)) = 3
-        _FresnelIntensity ("Frensnel Intensity", Range(0, 1)) = 1
 
         [Header(Tessellation)]
         [Space(5)]
@@ -83,6 +72,7 @@ Shader "URP Shader/Water" {
             #pragma domain  DomainProgram
 
             #pragma shader_feature _TESSELLATION_EDGE_ON
+            #pragma shader_feature _NORMALSWITCH_ON
 
             #pragma multi_compile  _ _MAIN_LIGHT_SHADOWS _MAIN_LIGHT_SHADOWS_CASCADE
             #pragma multi_compile _ _ADDITIONAL_LIGHTS_VERTEX _ADDITIONAL_LIGHTS

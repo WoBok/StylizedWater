@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering.Universal;
+using static RenderDepthOnly;
 
 public class PerformaceTest : MonoBehaviour
 {
@@ -30,7 +31,7 @@ public class PerformaceTest : MonoBehaviour
 
     void Y(InputAction.CallbackContext context)
     {
-
+        RenderDepthOnlyPass.isOpen = !RenderDepthOnlyPass.isOpen;
     }
 
     void X(InputAction.CallbackContext context)

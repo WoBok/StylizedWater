@@ -75,10 +75,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2a35e3812821a84a97fc22519b0edea, type: 3}
   m_Name: RenderDepthOnly
   m_EditorClassIdentifier: 
-  m_Active: 1
+  m_Active: 0
   layerMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 8
 --- !u!114 &2206421783509522508
 MonoBehaviour:
   m_ObjectHideFlags: 0
